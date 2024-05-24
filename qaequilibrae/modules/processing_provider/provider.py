@@ -13,12 +13,12 @@ class Provider(QgsProcessingProvider):
         self.tr = translator
 
     def loadAlgorithms(self):
-        from .MatrixFromLayer import MatrixFromLayer
-        from .exportMatrix import exportMatrix
-        from .ProjectFromLayer import ProjectFromLayer
-        from .RenumberFromCentroids import RenumberFromCentroids
+        from .matrix_from_layer import MatrixFromLayer
+        from .export_matrix import exportMatrix
+        from .project_from_layers import ProjectFromLayer
+        from .renumber_from_centroids import RenumberFromCentroids
         from .Add_connectors import AddConnectors
-        from .AssignFromYaml import TrafficAssignYAML
+        from .assign_from_yaml import TrafficAssignYAML
 
         self.addAlgorithm(MatrixFromLayer(self.tr))
         self.addAlgorithm(exportMatrix(self.tr))

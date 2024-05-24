@@ -15,7 +15,7 @@ import sys
 from string import ascii_lowercase
 from qaequilibrae.modules.common_tools import standard_path
 
-from .translatableAlgo import TranslatableAlgorithm
+from .translatable_algo import TranslatableAlgorithm
 
 
 class ProjectFromLayer(TranslatableAlgorithm):

@@ -1,6 +1,6 @@
 from qgis.core import QgsProcessingMultiStepFeedback, QgsProcessingParameterString, QgsProcessingParameterDefinition
 from qgis.core import QgsProcessingParameterField, QgsProcessingParameterMapLayer, QgsProcessingParameterFile
-from .translatableAlgo import TranslatableAlgorithm
+from .translatable_algo import TranslatableAlgorithm
 
 import importlib.util as iutil
 import os, sys

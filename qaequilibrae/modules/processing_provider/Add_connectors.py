@@ -4,7 +4,7 @@ from qgis.core import QgsProcessingMultiStepFeedback
 from qgis.core import QgsProcessingParameterFile, QgsProcessingParameterNumber, QgsProcessingParameterString
 from qaequilibrae.modules.common_tools import standard_path
 
-from .translatableAlgo import TranslatableAlgorithm
+from .translatable_algo import TranslatableAlgorithm
 
 
 class AddConnectors(TranslatableAlgorithm):

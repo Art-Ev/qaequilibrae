@@ -1,5 +1,5 @@
 from qgis.core import QgsProcessingParameterFile, QgsProcessingParameterEnum
-from .translatableAlgo import TranslatableAlgorithm
+from .translatable_algo import TranslatableAlgorithm
 import importlib.util as iutil
 import os, tempfile, sys
 from pathlib import Path
@@ -13,7 +13,7 @@ class exportMatrix(TranslatableAlgorithm):
                 "srcFile",
                 self.tr("Matrix"),
                 behavior=QgsProcessingParameterFile.File,
-                fileFilter=self.tr("AequilibraE matrix formats (*.omx or *.aem)"),
+                fileFilter="*.omx, *.aem",
                 defaultValue=None,
             )
         )
