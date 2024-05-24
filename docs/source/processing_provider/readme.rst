@@ -50,7 +50,9 @@ This tool is analogous to the widget menu :ref:`importing_matrices`, however it 
 require an open AequilibraE project to work. To use the tool, the user must have an open layer
 loaded in QGIS, and the menus are the ones presented in the figure below.
 
-.. FIGURE
+.. image:: ../images/processing_provider_import_matrices.png
+    :align: center
+    :alt: Processing provider import matrices
 
 The upper fields are mandatory, and are the ones responsible for selecting the layer, point
 which columns are equivalent to the origin, destination, and the flow, create a file name, and
@@ -61,14 +63,21 @@ Model Building
 --------------
 Add centroid connectors
 ~~~~~~~~~~~~~~~~~~~~~~~
+AequilibraE's processing tool can also add centroid connectors to a project's network. The user only
+need to add the number of centroids one wants to add, the modes to be connected, and point to the project
+folder. The default connection mode is **c** (car).
 
+.. image:: ../images/processing_provider_centroids.png
+    :align: center
+    :alt: Processing provider create project from link layer
 
 Create project from link layer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *Create project from link layer* is similar to the widget menu 
 :ref:`Create project from layers <project_from_layers>`, and allows the user to create an AequilibraE 
 project straight from a link layer, without requiring a node layer. With a geometric layer loaded into
-QGIS, 
+QGIS, select it in the *Links* button, and add the required data in the subsequent menus. Choose the project's
+name and point to the location you want to save it in your machine. 
 
 .. image:: ../images/processing_provider_project_from_links.png
     :align: center
@@ -76,11 +85,22 @@ QGIS,
 
 Nodes from centroid
 ~~~~~~~~~~~~~~~~~~~
+One can also import or create nodes to match one AequilibraE project with a GIS layer of centroids.
+Just select or import the centroids layer, point to the desired zones one wants to match and to the output
+folder.
 
-Paths ans assignment
+.. image:: ../images/processing_provider_nodes_from_centroids.png
+    :align: center
+    :alt: Processing provider create project from link layer
+
+Paths and assignment
 --------------------
 Traffic assignment from file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+AequilibraE traffic assignment can now be performed using an YAML file that contains the model input
+information. The process is also straightforward: create a valid YAML file, with pyour project path,
+required matrices and valid parameters, and load it into AequilibraE. The code block belows contains
+an example of valid YAML.
 
 .. image:: ../images/processing_provider_traffic_assignment.png
     :align: center
