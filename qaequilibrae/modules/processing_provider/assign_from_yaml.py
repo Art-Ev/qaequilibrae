@@ -14,7 +14,7 @@ class TrafficAssignYAML(TranslatableAlgorithm):
                 "confFile",
                 self.tr("Configuration file (.yaml)"),
                 behavior=QgsProcessingParameterFile.File,
-                fileFilter=self.tr("Assignment configuration file (*.yaml)"),
+                fileFilter="*.yaml",
                 defaultValue=None,
             )
         )
@@ -31,7 +31,7 @@ class TrafficAssignYAML(TranslatableAlgorithm):
         from aequilibrae.matrix import AequilibraeMatrix
         import yaml
 
-        feedback.pushInfo(self.tr("Getting parameters from input yaml file..."))
+        feedback.pushInfo(self.tr("Getting parameters from input YAML file..."))
         pathfile = parameters["confFile"]
         with open(pathfile, "r") as f:
             params = yaml.safe_load(f)
@@ -82,7 +82,7 @@ class TrafficAssignYAML(TranslatableAlgorithm):
                         sys.exit("error: fixed_cost must come with a correct value of time")
 
                 # Adding class
-                feedback.pushInfo("    - " + traffic + " " + str(classes[traffic]))
+                feedback.pushInfo(f"\t- {traffic} ' ' {str(classes[traffic])}")
 
                 traffic_classes.append(assigclass)
         feedback.pushInfo(" ")
@@ -136,43 +136,46 @@ class TrafficAssignYAML(TranslatableAlgorithm):
         return self.tr("Paths and assignment")
 
     def shortHelpString(self):
-        return self.tr(
-            """
-        Run a traffic assignment using a yaml configuration file. Example of valid configuration file:
-        ""
-        Project: D:/AequilibraE/Project/
-
-        Run_name: sce_from_yaml
-
-        Traffic_classes:
-            - car:
-                matrix_path: D:/AequilibraE/Project/matrices/demand.aem
-                matrix_core: car
-                network_mode: c
-                pce: 1
-                blocked_centroid_flows: True
-                skims: travel_time, distance
-            - truck:
-                matrix_path: D:/AequilibraE/Project/matrices/demand.aem
-                matrix_core: truck
-                network_mode: c
-                pce: 2
-                fixed_cost: toll
-                vot: 12
-                blocked_centroid_flows: True
-
-        Assignment:
-            algorithm: bfw
-            vdf: BPR2
-            alpha: 0.15
-            beta: power
-            capacity_field: capacity
-            time_field: travel_time
-            max_iter: 250
-            rgap: 0.00001
-        ""
-        """
-        )
+        return f"{self.string_order(1)}\n{self.string_order(2)}\n{self.string_order(3)}"
 
     def createInstance(self):
         return TrafficAssignYAML(self.tr)
+
+    def string_order(self, order):
+        if order == 1:
+            return self.tr("Run a traffic assignment using a YAML configuration file. ")
+        elif order == 2:
+            return self.tr("Example of valid configuration file: ")
+        elif order == 3:
+            return """
+                    Project: D:/AequilibraE/Project/
+
+                    Run_name: sce_from_yaml
+
+                    Traffic_classes:
+                        - car:
+                            matrix_path: D:/AequilibraE/Project/matrices/demand.aem
+                            matrix_core: car
+                            network_mode: c
+                            pce: 1
+                            blocked_centroid_flows: True
+                            skims: travel_time, distance
+                        - truck:
+                            matrix_path: D:/AequilibraE/Project/matrices/demand.aem
+                            matrix_core: truck
+                            network_mode: c
+                            pce: 2
+                            fixed_cost: toll
+                            vot: 12
+                            blocked_centroid_flows: True
+
+                    Assignment:
+                        algorithm: bfw
+                        vdf: BPR2
+                        alpha: 0.15
+                        beta: power
+                        capacity_field: capacity
+                        time_field: travel_time
+                        max_iter: 250
+                        rgap: 0.00001
+            """

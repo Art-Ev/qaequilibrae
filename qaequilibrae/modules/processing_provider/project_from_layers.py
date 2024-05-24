@@ -177,10 +177,10 @@ class ProjectFromLayer(TranslatableAlgorithm):
         return {"Output": output_file}
 
     def name(self):
-        return self.tr("Create project from layer")
+        return self.tr("Create project from link layer")
 
     def displayName(self):
-        return self.tr("Create project from layer")
+        return self.tr("Create project from link layer")
 
     def group(self):
         return self.tr("Model Building")

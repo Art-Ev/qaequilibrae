@@ -4,7 +4,9 @@ from qgis.core import QgsProcessingProvider
 from qgis.PyQt.QtGui import QIcon
 import os
 
-provider_path = os.path.dirname(__file__)
+provider_path = os.path.dirname(__file__)[:-28]
+# print(provider_path, provider_path[:-28])
+print(provider_path)
 
 
 class Provider(QgsProcessingProvider):

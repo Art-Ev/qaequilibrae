@@ -8,7 +8,7 @@ import sys
 from shapely.wkt import loads as load_wkt
 from qaequilibrae.modules.common_tools import standard_path
 
-from .translatableAlgo import TranslatableAlgorithm
+from .translatable_algo import TranslatableAlgorithm
 
 
 class RenumberFromCentroids(TranslatableAlgorithm):
@@ -146,12 +146,15 @@ class RenumberFromCentroids(TranslatableAlgorithm):
         return self.tr("Model Building")
 
     def shortHelpString(self):
-        return self.tr(
-            """
-        Import or create nodes to match an AequilibraE project with a GIS layer of centroids
-        Warning : you may have to change existing node_id (ex. using QGIS field calculator) to ensure that changed node IDs (coming from zone id) are not already used.
-        """
-        )
+        return f"{self.string_order(1)}\n{self.string_order(2)}{self.string_order(3)}"
 
     def createInstance(self):
         return RenumberFromCentroids(self.tr)
+
+    def string_order(self, order):
+        if order == 1:
+            return self.tr("Import or create nodes to match an AequilibraE project with a GIS layer of centroids.")
+        elif order == 2:
+            return self.tr("WARNING: you may have to change existing node_id (ex. using QGIS field calculator)")
+        elif order == 3:
+            return self.tr(" to ensure that changed node IDs (coming from Zone ID) are not already used.")

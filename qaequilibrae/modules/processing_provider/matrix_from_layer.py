@@ -62,7 +62,7 @@ class MatrixFromLayer(TranslatableAlgorithm):
             ),
             QgsProcessingParameterString(
                 "MatrixDescription",
-                self.tr("Describe your matrix"),
+                self.tr("Matrix description"),
                 optional=True,
                 multiLine=False,
                 defaultValue="",
@@ -167,14 +167,17 @@ class MatrixFromLayer(TranslatableAlgorithm):
         return self.tr("Data")
 
     def shortHelpString(self):
-        return self.tr(
-            """
-        Save a layer as a .aem file :
-        - the original matrix stored in the layer needs to be in list format
-        - Origin and destination fields need to be integers
-        - Value field can be integer or real
-        """
-        )
+        return f"{self.string_order(1)}\n{self.string_order(2)}\n{self.string_order(3)}\n{self.string_order(4)}"
 
     def createInstance(self):
         return MatrixFromLayer(self.tr)
+    
+    def string_order(self, order):
+        if order == 1:
+            return self.tr("Save a layer as a *.aem file. Notice that: ")
+        elif order == 2:
+            return self.tr("- the original matrix stored in the layer needs to be in list format")
+        elif order == 3:
+            return self.tr("- origin and destination fields need to be integers")
+        elif order == 4:
+            return self.tr("- value field can be either integer or real")
