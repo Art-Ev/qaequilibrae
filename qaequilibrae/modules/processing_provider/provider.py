@@ -1,10 +1,10 @@
-__author__ = 'Arthur Evrard'
+__author__ = "Arthur Evrard"
 
 from qgis.core import QgsProcessingProvider
 from qgis.PyQt.QtGui import QIcon
 import os
 
-ProviderPath = os.path.dirname(__file__)
+provider_path = os.path.dirname(__file__)
 
 
 class Provider(QgsProcessingProvider):
@@ -34,17 +34,17 @@ class Provider(QgsProcessingProvider):
         This string should be a unique, short, character only string,
         eg "qgis" or "gdal". This string should not be localised.
         """
-        return 'AequilibraE'
+        return "AequilibraE"
 
     def name(self):
         """The human friendly name of the plugin in Processing.
         This string should be as short as possible (e.g. "Lastools", not
         "Lastools version 1.0.1 64-bit") and localised.
         """
-        return self.tr('AequilibraE')
+        return "AequilibraE"
 
     def icon(self):
         """Should return a QIcon which is used for your provider inside
         the Processing toolbox.
         """
-        return QIcon(os.path.join(ProviderPath, "icon.png"))
+        return QIcon(os.path.join(provider_path, "icon.png"))
